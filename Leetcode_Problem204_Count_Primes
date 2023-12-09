@@ -1,0 +1,13 @@
+int countPrimes(int n) {
+    if(n < 3)
+        return 0;
+    int prime[n] , count = 0; 
+    memset(prime, 1, sizeof(prime)); 
+    for (int p = 2 ; p*p < n ; p++) 
+        if (prime[p]) 
+            for (int i = p*p; i < n; i += p) 
+                prime[i] = 0;
+    for (int p = 2; p < n; p++)
+        count += (prime[p]) ? 1 : 0; 
+    return count;
+}
